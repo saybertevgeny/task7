@@ -6,7 +6,7 @@
     <packaging>war</packaging>
     <groupId>task7</groupId>
     <artifactId>task7</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.10</maven.compiler.source>

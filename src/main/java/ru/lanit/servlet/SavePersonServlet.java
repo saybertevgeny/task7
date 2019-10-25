@@ -26,6 +26,7 @@ public class SavePersonServlet extends HttpServlet {
             statement.setString(4, (LocalDate.parse(request.getParameter("birthday"))).toString());
             statement.execute();
             statement.close();
+            connection.close();
             request.getSession().setAttribute("successMessage","Пользователь сохранен");
         }
         catch (SQLException|ClassNotFoundException e){
