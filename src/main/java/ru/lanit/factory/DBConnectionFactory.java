@@ -7,6 +7,17 @@ import java.util.ResourceBundle;
 
 public class DBConnectionFactory {
 
+    private static DBConnectionFactory instance;
+
+    private DBConnectionFactory(){}
+
+    public static DBConnectionFactory getInstance(){
+        if(instance == null){
+            instance = new DBConnectionFactory();
+        }
+        return instance;
+    }
+
     public Connection create() throws SQLException, ClassNotFoundException {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
         String username = resourceBundle.getString("username");

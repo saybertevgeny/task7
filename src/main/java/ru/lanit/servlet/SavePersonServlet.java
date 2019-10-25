@@ -18,13 +18,14 @@ public class SavePersonServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try{
-            Connection connection = (new DBConnectionFactory()).create();
+            Connection connection = DBConnectionFactory.getInstance().create();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO person(firstname,middlename,lastname,birthday) VALUES(?, ?, ?, ?)");
             statement.setString(1, request.getParameter("firstname"));
             statement.setString(2, request.getParameter("middlename"));
             statement.setString(3, request.getParameter("lastname"));
             statement.setString(4, (LocalDate.parse(request.getParameter("birthday"))).toString());
             statement.execute();
+            statement.close();
             request.getSession().setAttribute("successMessage","Пользователь сохранен");
         }
         catch (SQLException|ClassNotFoundException e){
